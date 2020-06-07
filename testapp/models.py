@@ -2,14 +2,13 @@ from django.db import models
 
 class Book(models.Model):
     """
-    Код книги
-    Автор
-    Название
-    Издательство
-    Год издания
-    Стоимость
+    Книга
     """
-    pass
+    author = models.CharField(max_length=200)    # Автор
+    title = models.CharField(max_length=200)    # Название
+    publisher = models.CharField(max_length=200)    # Издательство
+    published_date = models.IntegerField() # год издания
+    price = models.IntegerField()  # цена
 
 class BookOrdered(models.Model):
     # заказанные книги
@@ -19,10 +18,10 @@ class BookOrdered(models.Model):
     Отметка о возврате
     """
     pass
+
 class BookTheme(models.Model):
     # теметика книги
     """
-    Код
     Код книги
     Тема
     """
@@ -38,12 +37,10 @@ class Order(models.Model):
     pass
 
 class Reader(models.Model):
-    # читатель
     """
-    код читателя
-    Фамилия
-    Имя
-    Отчество
-    Телефон
+    читатель
     """
-    pass
+    name = models.CharField(max_length=200) # имя
+    surname = models.CharField(max_length=200) # фамилия
+    fathername = models.CharField(max_length=200) # Отчество
+    phone = models.CharField(max_length=200) # телефон
