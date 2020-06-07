@@ -7,7 +7,7 @@ class Book(models.Model):
     author = models.CharField(max_length=200)    # Автор
     title = models.CharField(max_length=200)    # Название
     publisher = models.CharField(max_length=200)    # Издательство
-    published_date = models.IntegerField() # год издания
+    published_year = models.IntegerField() # год издания
     price = models.IntegerField()  # цена
     theme_code = models.ForeignKey(
         'BookTheme', on_delete=models.CASCADE, default=0)

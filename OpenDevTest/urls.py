@@ -4,8 +4,10 @@ from rest_framework import routers
 from testapp import views
 
 router = routers.DefaultRouter()
+router.register(r'books', views.BookViewSet)
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'book-themes', views.BookThemeViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
