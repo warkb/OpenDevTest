@@ -8,6 +8,9 @@ router.register(r'books', views.BookViewSet)
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'book-themes', views.BookThemeViewSet)
+router.register(r'readers', views.ReaderViewSet)
+router.register(r'orders', views.OrderViewSet)
+router.register(r'book-ordered', views.BookOrderedViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

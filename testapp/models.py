@@ -25,8 +25,8 @@ class BookOrdered(models.Model):
         'Book', on_delete=models.CASCADE) # Код книги
     return_mark = models.BooleanField() #Отметка о возврате
     class Meta:
-        verbose_name = 'Заказ книги'
-        verbose_name_plural = 'Заказы книг'
+        verbose_name = 'Книга в заказе'
+        verbose_name_plural = 'Книги в заказе'
 
 class BookTheme(models.Model):
     # тематика книги
@@ -49,6 +49,10 @@ class Order(models.Model):
     reader_code = models.ForeignKey(
         'Reader', on_delete=models.CASCADE) # Читатель
     date = models.DateField() # Дата заказа
+
+    def __str__(self):
+        return 'Заказ от ' + str(self.date)
+
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
@@ -57,10 +61,14 @@ class Reader(models.Model):
     """
     читатель
     """
-    name = models.CharField(max_length=200) # имя
     surname = models.CharField(max_length=200) # фамилия
+    name = models.CharField(max_length=200) # имя
     fathername = models.CharField(max_length=200) # Отчество
     phone = models.CharField(max_length=200) # телефон
+
+    def __str__(self):
+        return self.surname
+
     class Meta:
         verbose_name = 'Читатель'
         verbose_name_plural = 'Читатели'

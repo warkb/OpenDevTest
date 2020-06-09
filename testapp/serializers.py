@@ -17,7 +17,6 @@ class BookThemeSerializer(serializers.HyperlinkedModelSerializer):
         model = BookTheme
         fields = ['theme']
 
-
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     theme_code = BookThemeSerializer()
     class Meta:
@@ -29,3 +28,32 @@ class BookSerializer(serializers.HyperlinkedModelSerializer):
                   'price',
                   'theme_code'
                   ]
+
+class ReaderSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Reader
+        fields = [
+            'surname',
+            'name',
+            'fathername',
+            'phone'
+        ]
+
+class OrderSerializer(serializers.HyperlinkedModelSerializer):
+    reader_code = ReaderSerializer()
+    class Meta:
+        model = Order
+        fields = [
+            'reader_code',
+            'date'
+        ]
+
+class BookOrderedSerializer(serializers.HyperlinkedModelSerializer):
+    order_code = OrderSerializer()
+    book_code = BookSerializer()
+    class Meta:
+        model = BookOrdered
+        fields = [
+            'order_code',
+            'book_code'
+        ]

@@ -25,3 +25,15 @@ class BookViewSet(viewsets.ModelViewSet):
 class BookThemeViewSet(viewsets.ModelViewSet):
     queryset = BookTheme.objects.all()
     serializer_class = BookThemeSerializer
+
+class ReaderViewSet(viewsets.ModelViewSet):
+    queryset = Reader.objects.all()
+    serializer_class = ReaderSerializer
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+class BookOrderedViewSet(viewsets.ModelViewSet):
+    queryset = BookOrdered.objects.all()
+    serializer_class = BookOrderedSerializer
