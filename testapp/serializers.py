@@ -5,23 +5,24 @@ from rest_framework import serializers
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'groups']
+        fields = ['pk', 'url', 'username', 'email', 'groups']
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
-        fields = ['url', 'name']
+        fields = ['pk', 'url', 'name']
 
 class BookThemeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BookTheme
-        fields = ['theme']
+        fields = ['pk','theme']
 
 class BookSerializer(serializers.HyperlinkedModelSerializer):
     theme_code = BookThemeSerializer()
     class Meta:
         model = Book
-        fields = ['author',
+        fields = ['pk',
+                  'author',
                   'title',
                   'publisher',
                   'published_year',
@@ -33,6 +34,7 @@ class ReaderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Reader
         fields = [
+            'pk',
             'surname',
             'name',
             'fathername',
@@ -44,6 +46,7 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
         fields = [
+            'pk',
             'reader_code',
             'date'
         ]
@@ -54,6 +57,7 @@ class BookOrderedSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = BookOrdered
         fields = [
+            'pk',
             'order_code',
             'book_code'
         ]
